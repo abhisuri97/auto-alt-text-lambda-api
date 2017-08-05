@@ -44,6 +44,10 @@ Response:
 ]
 ```
 
+### Working in the chrome extension
+
+![gif of auto alt text chrome extension](https://media.giphy.com/media/xT39Ddq3CE8Fe4gZwc/giphy.gif)
+
 ## Purpose
 
 The purpose of the Auto Alt Text API is to generate captions for scenes with the im2txt model.
