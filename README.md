@@ -7,7 +7,7 @@ This repository contains the code for the API backing the Auto Alt Text chrome e
 This API link is working as of Aug 5 2017. 
 
 ```
-http://im2txt-api-dev.us-west-2.elasticbeanstalk.com/predict
+https://v0fkjw6l82.execute-api.us-west-2.amazonaws.com/prod/auto-alt-text-api?url=url1,url2...
 ```
 
 ### Usage
@@ -17,7 +17,8 @@ The URL accepts a single query parameter `url` with the link to the image you wi
 Request:
 
 ```
-http://im2txt-api-dev.us-west-2.elasticbeanstalk.com/predict?url=https://hack4impact.org/assets/images/photos/mayors-awards.jpg
+
+https://v0fkjw6l82.execute-api.us-west-2.amazonaws.com/prod/auto-alt-text-api?url=https://hack4impact.org/assets/images/photos/mayors-awards.jpg
 ```
 
 Response:
@@ -116,3 +117,10 @@ In order to have the Lambda app pull the model.zip file from S3, it is necessary
 }
 ```
 
+## Known Errors / Room for Improvement
+
+For working with non standard images that can't be handled by tensorflow's image.decode, the application will fail (the original model was trained on JPEG images). Importing a library such as Pillow can work...but Lamdba has a maximum file size limit of 512 MB of unzipped files in memory (currently I am close to 490 MB of usage).
+
+A better model that is trained on a more comprehensive image set other than MSCOCO can also be of use.
+
+Larger picture things would include creating separate APIs for face detection (along with emotion detection) as well as text recognition.
